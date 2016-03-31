@@ -5,6 +5,9 @@
  */
 package practice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author AcerPC
@@ -13,24 +16,29 @@ public class Practice {
 
     
     public static void main(String[] args) {
-            int total = 2; 
             
-            int n =1;
-            int k =2;
             
-            while(n<4000000 && k<4000000){
-                n=n+k;
-                if(n%2==0){
-                    total+=n;
-                }
-                
-                k=k+n;
-                if(k%2 == 0){
-                    total+=k;
+
+//            The prime factors of 13195 are 5, 7, 13 and 29.
+//
+//What is the largest prime factor of the number 600851475143 ?
+            List<Integer> edorsArray = new ArrayList<Integer>();
+            long result = 600851475143L;
+            int i = 2; 
+            
+            while (result != 1){
+                if (result%i == 0){
+                    result = result/i;
+                    edorsArray.add(i);
+                }else{
+                    i++;
                 }
             }
             
-            System.out.println(total);
+            System.out.print(edorsArray);
+            for (int j=0; j<edorsArray.size();j++){
+                System.out.println(edorsArray.get(j));
+            }
 
     }
     
