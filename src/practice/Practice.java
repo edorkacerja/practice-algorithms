@@ -13,13 +13,20 @@ public class Practice {
 
     
     public static void main(String[] args) {
-            int total = 0; 
+            int total = 2; 
             
-            for (int i=1; i<1000; i++){
-                if (i%3 == 0){
-                    total+=i;
-                }else if(i%5 == 0){
-                    total+=i;
+            int n =1;
+            int k =2;
+            
+            while(n<4000000 && k<4000000){
+                n=n+k;
+                if(n%2==0){
+                    total+=n;
+                }
+                
+                k=k+n;
+                if(k%2 == 0){
+                    total+=k;
                 }
             }
             
