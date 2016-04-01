@@ -19,68 +19,27 @@ public class Practice {
     
     public static void main(String[] args) {
         
-        int n = 999;
-            int res = n*n;
-            String resultString = Integer.toString(res);
-            int length = resultString.length();
+        int number = 100;
+        int n=1;
+        boolean numberFound = false;
         
-        int i = 0;
-        
-        //9801
-        
-        for (int edor = 0; edor <(length/2)+1; edor++){
-            if(resultString.charAt(i) == resultString.charAt(length-1)){
-                i++;
-                length--;
-                System.out.println(" palindrome");
+        for(n=1; n<=20; n++){
+            if (number%n == 0){
+              continue;
             }else{
-                System.out.println("not palindrome");
-                n--;
-                res= n*n;
-                i=0;
-                resultString = Integer.toString(res);
-                length = resultString.length();
-                edor = -1;
-                
+                number++;
+                n=1;
             }
+            
+        
+        
+        
         }
         
-        System.out.println(n);
-        System.out.println(res);
+        System.out.print(number);
         
-        
-        
-        
-        boolean isPalindrome = false;
-        
-        
-//        while (isPalindrome == false){
-//            
-//            result = n*n;
-//            outerloop: for(int v=1; v<(length/2)+1; v++){
-//                
-//            
-//                if( resultString.charAt(i) == resultString.charAt(length-1) ){
-//                    i++;
-//                    length--;
-//                    
-//
-//                }else{
-//                    n--;
-                      
-//                    break outerloop;
-//                }
-//                
-//                System.out.print(result);
-//                isPalindrome = true;
-//                
-//                
-//            }
-//
-//        }
-        
-        
-
     }
+        
+    
     
 }
