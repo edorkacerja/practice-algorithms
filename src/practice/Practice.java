@@ -7,36 +7,54 @@ package practice;
 
 import java.util.ArrayList;
 import java.util.List;
-import static oracle.jrockit.jfr.events.Bits.length;
+
 
 /**
  *
  * @author AcerPC
  */
 public class Practice {
-            
-     
+    int count = 0;
+
+static List<String> myArray = new ArrayList<String>();
+
     
-    public static void main(String[] args) {
         
-        int SquareOfSum = 0;
-        int SumOfSquares = 0;
-        int diff = 0;
-        
-        for (int n =1; n<=100; n++){
-            SumOfSquares+=n*n;
-        }
-        for (int n = 1; n<=100; n++){
-            SquareOfSum+=n;
-        }
-        SquareOfSum*=SquareOfSum;
-        
-        diff=SumOfSquares-SquareOfSum;
-        
-        System.out.print(diff);
-        
-    }
-        
+        public static void main (String[] args)
+   {		
+       int i =0;
+       int num =0;
+       //Empty String
+       String  primeNumbers = "";
+       List<Integer> myArray = new ArrayList<Integer>();
+       for (i = 1; i <= 110012; i++)         
+       { 		  	  
+          int counter=0; 	  
+          for(num =i; num>=1; num--)
+	  {
+             if(i%num==0)
+	     {
+ 		counter = counter + 1;
+	     }
+	  }
+	  if (counter ==2)
+	  {
+	     //Appended the Prime number to the String
+	     myArray.add(i);
+	  }	
+       }	
+       System.out.println("Prime numbers from 1 to 100 are :");
+       System.out.println(myArray.get(10000));
+   }
     
     
 }
+
+
+
+
+
+
+
+
+
