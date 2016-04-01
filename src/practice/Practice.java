@@ -19,24 +19,21 @@ public class Practice {
     
     public static void main(String[] args) {
         
-        int number = 100;
-        int n=1;
-        boolean numberFound = false;
+        int SquareOfSum = 0;
+        int SumOfSquares = 0;
+        int diff = 0;
         
-        for(n=1; n<=20; n++){
-            if (number%n == 0){
-              continue;
-            }else{
-                number++;
-                n=1;
-            }
-            
-        
-        
-        
+        for (int n =1; n<=100; n++){
+            SumOfSquares+=n*n;
         }
+        for (int n = 1; n<=100; n++){
+            SquareOfSum+=n;
+        }
+        SquareOfSum*=SquareOfSum;
         
-        System.out.print(number);
+        diff=SumOfSquares-SquareOfSum;
+        
+        System.out.print(diff);
         
     }
         
