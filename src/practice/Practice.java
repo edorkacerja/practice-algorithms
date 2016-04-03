@@ -18,27 +18,31 @@ public class Practice {
         
         public static void main (String[] args)
    {
+       int finalNumber = 0;
+       int count = 0;
        
-       long total = 0;
-       for(int n=3; n<=2000000; n+=2){
-           if(isPrime(n)){
-               total+=n;
-           }
+       for (int i=1; i<=5000; i++){
+           finalNumber += i;
+           
+           System.out.println(finalNumber);  
+           
+       
+            for (int n=finalNumber; n>=1; n--){
+                        if(finalNumber%n == 0){
+                            count++;
+                            if (count >=500){
+                                System.out.print("SUCCESSS");
+                                System.out.println(finalNumber);
+                            }
+                        }
+            }
+
        }
-       System.out.println(total);
+       
        
    }
 
-    private static boolean isPrime(int n) {
-        for(int g = n -1; g>=2; g--){
-            if(n%g==0){
-                return false;
-            }
-            
-        }
-        return true;
-
-    }
+   
     
     
 }
