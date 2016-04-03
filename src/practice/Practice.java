@@ -20,7 +20,7 @@ public class Practice {
    {
        
        long total = 0;
-       for(int n=1; n<=2000000; n++){
+       for(int n=3; n<=2000000; n+=2){
            if(isPrime(n)){
                total+=n;
            }
