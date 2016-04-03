@@ -5,8 +5,7 @@
  */
 package practice;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 /**
@@ -19,20 +18,27 @@ public class Practice {
         
         public static void main (String[] args)
    {
-       int a=1, b=1, c=1;
        
-       for(a = 1; a<=1000; a++){
-           for(b=1; b<=1000; b++){
-               for(c=1;c<=1000;c++){
-                   if((a*a + b*b == c*c) && a+b+c==1000){
-                       System.out.println(a*b*c);
-                   }
-               }
+       long total = 0;
+       for(int n=1; n<=2000000; n++){
+           if(isPrime(n)){
+               total+=n;
            }
        }
-       
+       System.out.println(total);
        
    }
+
+    private static boolean isPrime(int n) {
+        for(int g = n -1; g>=2; g--){
+            if(n%g==0){
+                return false;
+            }
+            
+        }
+        return true;
+
+    }
     
     
 }
