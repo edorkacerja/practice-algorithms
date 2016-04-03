@@ -14,27 +14,22 @@ import java.util.List;
  * @author AcerPC
  */
 public class Practice {
-    int count = 0;
-
-static List<String> myArray = new ArrayList<String>();
-
+    
     
         
         public static void main (String[] args)
-   {		
+   {
+       int a=1, b=1, c=1;
        
-       int SS = 0;
-       int SoS = 0;
-       int res = 0;
-       
-       for (int n=1; n<=100; n++){
-           SS += n*n;
-           SoS += n;
+       for(a = 1; a<=1000; a++){
+           for(b=1; b<=1000; b++){
+               for(c=1;c<=1000;c++){
+                   if((a*a + b*b == c*c) && a+b+c==1000){
+                       System.out.println(a*b*c);
+                   }
+               }
+           }
        }
-       
-       res = SoS*SoS - SS;
-       
-       System.out.println(res);
        
        
    }
