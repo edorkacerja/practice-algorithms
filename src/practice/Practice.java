@@ -5,6 +5,8 @@
  */
 package practice;
 
+import java.util.LinkedList;
+
 
 
 
@@ -14,41 +16,32 @@ package practice;
  */
 public class Practice {
     
-        public static int biggest = 0;
-       
-	
-	public static void main(String[] args)
+        public static void main(String[] args)
 	{
-            int count = 0;
-            int bestNumber = 0;
+            long  product = 1;
+            long  product2 = 1;
+            int n = 40;
+            long  result = 1;
             
-            
-            
-            for(int number=999999; number>13; number--){
-                count = 0;
-                
-                bestNumber = number;
-                
-                while(bestNumber != 1){
-                    
-                    if (bestNumber %2 == 0){
-                        bestNumber = bestNumber / 2;
-                    }else if(bestNumber %2 == 1){
-                        bestNumber = 3*bestNumber +1;
-                    }
-                    count++;
-//                    System.out.println(bestNumber);
-                }
-
-                if(count>=biggest){
-                    biggest = count;
-                    System.out.println(biggest);
-                    count = 0;
-                    System.out.println(number);
-                }
-                
+            for(int k=1; k<=n; k++){
+                product *= k;
             }
-	}
+            
+            for(int i=1; i<=20; i++){
+                product2 *= i;
+            } 
+            
+//            result = product / (product2*product2);
+            System.out.println(product);
+            System.out.println(product2);
+            System.out.println(result);
+            
+            
+            
+            
+            
+            
+        }
 
 
    
