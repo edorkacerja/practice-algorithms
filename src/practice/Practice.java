@@ -5,6 +5,7 @@
  */
 package practice;
 
+import java.math.BigInteger;
 import java.util.LinkedList;
 
 
@@ -15,16 +16,16 @@ import java.util.LinkedList;
  * @author AcerPC
  */
 public class Practice {
-    
+                public static BigInteger  product = new BigInteger("1");
+
         public static void main(String[] args)
 	{
-            long  product = 1;
             long  product2 = 1;
             int n = 40;
             long  result = 1;
             
-            for(int k=1; k<=n; k++){
-                product *= k;
+            for(long k=1; k<=n; k++){
+                product = product.multiply(product);
             }
             
             for(int i=1; i<=20; i++){
