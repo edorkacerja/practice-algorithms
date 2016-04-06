@@ -16,45 +16,28 @@ import java.util.LinkedList;
  * @author AcerPC
  */
 public class Practice {
-                public static BigInteger  product = new BigInteger("1");
-
-        public static void main(String[] args)
-	{
-            long  product2 = 1;
-            int n = 40;
-            long  result = 1;
-            
-            for(long k=1; k<=n; k++){
-                product = product.multiply(product);
+    
+    public static void main(String[] args) {
+        
+        int[][] G = {{3},{7, 4},{2, 4, 6}, {8, 5, 9, 3}};
+        int biggestSum=0;
+        
+        for(int j=0; j<G.length; j++){
+            int sum =0;
+            for(int i=0; i<G[j].length; i++){
+                sum+=G[j][i];
             }
-            
-            for(int i=1; i<=20; i++){
-                product2 *= i;
-            } 
-            
-//            result = product / (product2*product2);
-            System.out.println(product);
-            System.out.println(product2);
-            System.out.println(result);
-            
-            
-            
-            
-            
-            
+            if(sum>biggestSum){
+                biggestSum=sum;
+            }
         }
-
-
+        
+        System.out.println(biggestSum);
+                    
+}
    
     
     
 }
-
-
-
-
-
-
-
 
 
