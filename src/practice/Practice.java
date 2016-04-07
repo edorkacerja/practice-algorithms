@@ -17,46 +17,43 @@ import java.util.LinkedList;
  */
 public class Practice {
     
-    public static void main(String[] args) {
-        // TODO code application logic here
-        BigInteger numberTwo = BigInteger.valueOf(2);
-        
-        BigInteger sum = numberTwo.pow(1000);
-        
-//        System.out.print(sum.pow(15));
-        
-        
-        
-        
-        
-        int totalSumOfDigits = 0;
-        
-        int digits = getDigitCount(sum);
-        String sumAsString = "" + sum;
-        
-        
-        
-        for(int i=0; i<digits; i++){
-            int x = Character.getNumericValue(sumAsString.charAt(i));
-            totalSumOfDigits += x;
+    public static void main(String[] args)
+	{
+            
+            //for i : 1to1000
+            //call function divisorSum(i)
+                //for j : 1to1000
+                //call function divisorSum(j)
+                //if 1=2
+                    //sum= sum + i + j
+            int bigSum = 0;
+//            for(int i = 1; i <=1000; i++){
+//                int sumOfDiv = divisorSum(i);
+//                int sumOfDiv2 = divisorSum(sumOfDiv);
+//                if(sumOfDiv==sumOfDiv2){
+//                    bigSum =bigSum + sumOfDiv + sumOfDiv2;
+//                }
+//            }
+//            
+//            System.out.println(bigSum);
 
+System.out.println(divisorSum(220));
         }
         
-        System.out.println(totalSumOfDigits);
+        //function which returns the sum of the divisors of a number
+            //for k: number-1 to 2
+                //if number%k == 0
+                    //sumDiv += k
         
-        
-        
-    }
-    
-    public static int getDigitCount(BigInteger number) {
-  double factor = Math.log(2) / Math.log(10);
-  int digitCount = (int) (factor * number.bitLength() + 1);
-  if (BigInteger.TEN.pow(digitCount - 1).compareTo(number) > 0) {
-    return digitCount - 1;
-  }
-  return digitCount;
-}
-   
+        public static int divisorSum (int number){
+            int sumOfDivisors = 0;
+            for(int k = number-1; k>=2; k--){
+                if(number%k == 0){
+                    sumOfDivisors += k;
+                }
+            }
+            return sumOfDivisors;
+        }
     
     
 }
