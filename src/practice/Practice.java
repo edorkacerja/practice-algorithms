@@ -18,22 +18,43 @@ import java.util.LinkedList;
 public class Practice {
     
     public static void main(String[] args) {
+        // TODO code application logic here
+        BigInteger numberTwo = BigInteger.valueOf(2);
         
-        int[][] G = {{3},{7, 4},{2, 4, 6}, {8, 5, 9, 3}};
-        int biggestSum=0;
+        BigInteger sum = numberTwo.pow(1000);
         
-        for(int j=0; j<G.length; j++){
-            int sum =0;
-            for(int i=0; i<G[j].length; i++){
-                sum+=G[j][i];
-            }
-            if(sum>biggestSum){
-                biggestSum=sum;
-            }
+//        System.out.print(sum.pow(15));
+        
+        
+        
+        
+        
+        int totalSumOfDigits = 0;
+        
+        int digits = getDigitCount(sum);
+        String sumAsString = "" + sum;
+        
+        
+        
+        for(int i=0; i<digits; i++){
+            int x = Character.getNumericValue(sumAsString.charAt(i));
+            totalSumOfDigits += x;
+
         }
         
-        System.out.println(biggestSum);
-                    
+        System.out.println(totalSumOfDigits);
+        
+        
+        
+    }
+    
+    public static int getDigitCount(BigInteger number) {
+  double factor = Math.log(2) / Math.log(10);
+  int digitCount = (int) (factor * number.bitLength() + 1);
+  if (BigInteger.TEN.pow(digitCount - 1).compareTo(number) > 0) {
+    return digitCount - 1;
+  }
+  return digitCount;
 }
    
     
