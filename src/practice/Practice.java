@@ -16,30 +16,71 @@ import java.util.Vector;
  */
 public class Practice {
     
-    public static boolean isOrdered(double[] doubleArray, int numElements){
-               double first = 0;
-               for (int i=0; i < numElements; i++){
-                   if(doubleArray[i]<first){
-                       return false;
-                   }else{
-                       first = doubleArray[i];
-                   }
-                   
-               }
-               return true;
-           };
+   
     
     public static void main(String[] args){
         
-        double[] doubleArray = {1.2, 2.3, 3.4, 4.5, 5.6, 6.7, 5.8};
-        int numberOfElements = doubleArray.length;
+        double[][] myArray = new double[][]{
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+        
+        TwoDimetionalArray edorsArray = new TwoDimetionalArray(myArray, 3, 3);
            
-        System.out.println(isOrdered(doubleArray, numberOfElements));
-           
+        System.out.println(edorsArray.colAverage(1));
+        System.out.println(edorsArray.rowAverage(1));
+        System.out.println(edorsArray.overallAverage());
+
+        
+        
            
             
         }
     
     
     
+}
+
+class TwoDimetionalArray {
+    
+    private double[][] data;
+    private int cols;
+    private int rows;
+    
+    public TwoDimetionalArray(double[][] data, int rows, int cols){
+        this.data = data;
+        this.rows = rows;
+        this.cols = cols;
+    }
+    
+    public double rowAverage(int rowNumber){
+        double rowSum=0;
+        for(int i = 0; i < cols; i++){
+            rowSum += data[rowNumber][i];
+        }
+        
+        return rowSum/cols;
+    }
+    
+    public double colAverage(int colNumber){
+        double colSum=0;
+        for(int i = 0; i < rows; i++){
+            colSum += data[i][colNumber];
+        }
+        
+        return colSum/rows;
+    }
+    
+    public double overallAverage(){
+        double totalSum = 0;
+        
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                totalSum += data[i][j];
+            }
+        }
+        
+        return totalSum/(rows*cols);
+    }
 }
