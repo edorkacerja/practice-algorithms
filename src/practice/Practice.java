@@ -14,22 +14,34 @@ import java.util.Vector;
  *
  * @author AcerPC
  */
+
+
 public class Practice {
     
    
     
     public static void main(String[] args){
         
-        double[][] myArray = new double[][]{
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
-    };
         
-        TwoDimetionalArray edorsArray = new TwoDimetionalArray(myArray, 3, 3);
+        Random r = new Random(); 
+        double randomDouble;
+        double[][] myOtherArray = new double[20][6];
+            for (int i=0; i<20; i++){
+            for (int j = 0; j<6; j++){
+                randomDouble = r.nextDouble()*100;
+                myOtherArray[i][j] = randomDouble;
+            }
+        }
+        
+        
+        
+        
+        
+        TwoDimetionalArray edorsArray = new TwoDimetionalArray(myOtherArray, 20, 6);
            
-        System.out.println(edorsArray.colAverage(1));
-        System.out.println(edorsArray.rowAverage(1));
+        System.out.println(edorsArray.toString());
+        System.out.println(edorsArray.colAverage(4));
+        System.out.println(edorsArray.rowAverage(0));
         System.out.println(edorsArray.overallAverage());
 
         
