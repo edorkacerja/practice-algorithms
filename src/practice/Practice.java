@@ -16,25 +16,30 @@ import java.util.Vector;
  */
 public class Practice {
     
+    public static boolean isOrdered(double[] doubleArray, int numElements){
+               double first = 0;
+               for (int i=0; i < numElements; i++){
+                   if(doubleArray[i]<first){
+                       return false;
+                   }else{
+                       first = doubleArray[i];
+                   }
+                   
+               }
+               return true;
+           };
+    
     public static void main(String[] args){
-           Random randomGenerator = new Random();
-           Vector myVector = new Vector(100);
-           double randomDouble; 
+        
+        double[] doubleArray = {1.2, 2.3, 3.4, 4.5, 5.6, 6.7, 5.8};
+        int numberOfElements = doubleArray.length;
            
-           for(int i = 0; i<100; i++){
-               randomDouble = randomGenerator.nextDouble()*100;
-               Double myDoubleObject = randomDouble;
-               myVector.add(myDoubleObject);
-           }
+        System.out.println(isOrdered(doubleArray, numberOfElements));
            
-           System.out.println(myVector);
-
-            
-            
-            
-            
+           
             
         }
+    
     
     
 }
