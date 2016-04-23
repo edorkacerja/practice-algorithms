@@ -6,6 +6,7 @@
 package practice;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
 import java.util.Vector;
@@ -19,77 +20,111 @@ import java.util.Vector;
 
 public class Practice extends Stack{
     
-
-    /**
-     * @param args the command line arguments
-     */
-    
-    private Node top = null;
-    private int numElems = 0;
-    
-    
-    public void push(Object itemObj){
-        Node newNode = new Node(itemObj, top);
-        top = newNode;
-        numElems++;
-    }
-    
-    public void pop(){
-        if(isEmpty()){
-            throw new NoSuchElementException("Stack is empth");
-        }else{
-            Node oldNode = top;
-            top = top.next;
-            numElems--;
-            oldNode = null;
-        }
-    }
-   
-    public void makeEmpty(){
-        while(top != null){
-            Node previous = top;
-            top = top.next;
-            previous = null;
-        }
-        numElems = 0;
-    }
-    
-    public Object top(){
-        if(isEmpty()){
-            throw new NoSuchElementException("Stack is empty");
-        }else{
-            return top.item;
-        }
-    }
-
-    public boolean isEmpty(){
-        return top == null;
-    }
-    
-    public int size(){
-        return numElems;
-    }
-    
-    private class Node {
-        private Object item;
-        private Node next;
-        
-        private Node(Object element, Node nodeLink){
-            item = element;
-            next = nodeLink;
-        }
-    }
-    
-   public static void main(String args[]) {
-      JavaApplication1 myLinkedStack = new JavaApplication1();
-      myLinkedStack.push(new)
+   private Stack theStack;
+   private String input;
+   private String output = "";
+   public Practice(String in) {
+      input = in;
+      int stackSize = input.length();
+      theStack = new Stack(stackSize);
    }
-        
+   public String doTrans() {
+      for (int j = 0; j < input.length(); j++) {
+         char ch = input.charAt(j);
+         switch (ch) {
+            case '+': 
+            case '-':
+            gotOper(ch, 1); 
+            break; 
+            case '*': 
+            case '/':
+            gotOper(ch, 2); 
+            break; 
+            case '(': 
+            theStack.push(ch);
+            break;
+            case ')': 
+            gotParen(ch); 
+            break;
+            default: 
+            output = output + ch; 
+            break;
+         }
+      }
+      while (!theStack.isEmpty()) {
+         output = output + theStack.pop();
+      }
+      System.out.println(output);
+      return output; 
+   }
+   public void gotOper(char opThis, int prec1) {
+      while (!theStack.isEmpty()) {
+         char opTop = theStack.pop();
+         if (opTop == '(') {
+            theStack.push(opTop);
+            break;
+         }
+         else {
+            int prec2;
+            if (opTop == '+' || opTop == '-')
+            prec2 = 1;
+            else
+            prec2 = 2;
+            if (prec2 < prec1) { 
+               theStack.push(opTop);
+               break;
+            }
+		    else
+            output = output + opTop;
+         }
+      }
+      theStack.push(opThis);
+   }
+   public void gotParen(char ch){ 
+      while (!theStack.isEmpty()) {
+         char chx = theStack.pop();
+         if (chx == '(') 
+         break; 
+         else
+         output = output + chx; 
+      }
+   }
+   public static void main(String[] args) 
+   throws IOException {
+      String input = "1+2*4/5-7+3/6";
+      String output;
+      Practice theTrans = new Practice(input);
+      output = theTrans.doTrans(); 
+      System.out.println("Postfix is " + output + '\n');
+   }
+   class Stack {
+      private int maxSize;
+      private char[] stackArray;
+      private int top;
+      public Stack(int max) {
+         maxSize = max;
+         stackArray = new char[maxSize];
+         top = -1;
+      }
+      public void push(char j) {
+         stackArray[++top] = j;
+      }
+      public char pop() {
+         return stackArray[top--];
+      }
+      public char peek() {
+         return stackArray[top];
+      }
+      public boolean isEmpty() {
+         return (top == -1);
+     }
+   }
+}
         
         
 
         
     
-}
+
     
     
