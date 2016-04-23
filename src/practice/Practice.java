@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
-import java.util.Vector;
+import java.util.*;
 
 
 /**
@@ -18,10 +18,11 @@ import java.util.Vector;
  */
 
 
-public class Practice extends Stack{
+public class Practice{
     
-   private Stack theStack;
-   private String input;
+    
+   private final Stack theStack;
+   private final String input;
    private String output = "";
    public Practice(String in) {
       input = in;
@@ -91,7 +92,7 @@ public class Practice extends Stack{
    }
    public static void main(String[] args) 
    throws IOException {
-      String input = "1+2*4/5-7+3/6";
+      String input = "1+2*3-4/5+6";
       String output;
       Practice theTrans = new Practice(input);
       output = theTrans.doTrans(); 
@@ -122,6 +123,39 @@ public class Practice extends Stack{
 }
         
         
+
+// infix which is the input string
+// dictionary with the operands a,b,c etc
+// postfix
+
+
+// constructor which turns the string input into lowercase and removes spaces and newlines
+    //infix = input.trim().toLowerCase();
+    //runs the converter funciton
+
+
+//converter function
+    //for loop - iterates through all characters in the infix String
+        //if character is from a-z (operand)
+            //append to postfix
+        //else if character is operator
+            // if stack is empty
+                //push into stack
+            //else (stack !empty)
+                // compare topChar with character (for precedence)
+                    //if topChar>character
+                        //append topChar to postfix
+                        //remove topChar from stack
+                    //push character to stack
+    //for loop - iterates through all characters, pop all the values of the stack into the postfix
+        //postfix += stack.top
+        //stack.pop
+    //return postfix
+
+
+
+
+
 
         
     
