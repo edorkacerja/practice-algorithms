@@ -122,7 +122,7 @@ public class Practice{
    }
 }
         
-        
+
 
 // infix which is the input string
 // dictionary with the operands a,b,c etc
