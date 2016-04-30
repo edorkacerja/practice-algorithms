@@ -20,145 +20,95 @@ import java.util.*;
 
 public class Practice{
     
+    static ArrayList aboundantNumbers = new ArrayList();
+    static ArrayList sumsOfTwoAboundantNumbers = new ArrayList();
+    static ArrayList numbers = new ArrayList();
+    static ArrayList finalArray = new ArrayList();
     
-   private final Stack theStack;
-   private final String input;
-   private String output = "";
-   public Practice(String in) {
-      input = in;
-      int stackSize = input.length();
-      theStack = new Stack(stackSize);
-   }
-   public String doTrans() {
-      for (int j = 0; j < input.length(); j++) {
-         char ch = input.charAt(j);
-         switch (ch) {
-            case '+': 
-            case '-':
-            gotOper(ch, 1); 
-            break; 
-            case '*': 
-            case '/':
-            gotOper(ch, 2); 
-            break; 
-            case '(': 
-            theStack.push(ch);
-            break;
-            case ')': 
-            gotParen(ch); 
-            break;
-            default: 
-            output = output + ch; 
-            break;
-         }
-      }
-      while (!theStack.isEmpty()) {
-         output = output + theStack.pop();
-      }
-      System.out.println(output);
-      return output; 
-   }
-   public void gotOper(char opThis, int prec1) {
-      while (!theStack.isEmpty()) {
-         char opTop = theStack.pop();
-         if (opTop == '(') {
-            theStack.push(opTop);
-            break;
-         }
-         else {
-            int prec2;
-            if (opTop == '+' || opTop == '-')
-            prec2 = 1;
-            else
-            prec2 = 2;
-            if (prec2 < prec1) { 
-               theStack.push(opTop);
-               break;
+    
+    
+    public static void populateArray(ArrayList arr){
+        for (int i=1; i<=2813; i++){
+            arr.add(i);
+        }
+    }
+    
+    
+    
+    public static int findSumOfDivisors (int input){
+        
+        int maxD = (int)Math.sqrt(input);
+        int sum=1;
+        for(int i = 2; i <= maxD; i++)
+        {
+            if(input % i == 0)
+            {
+               sum += i;
+               int d = input/i;
+               if(d!=i)
+                  sum+=d;
             }
-		    else
-            output = output + opTop;
-         }
-      }
-      theStack.push(opThis);
-   }
-   public void gotParen(char ch){ 
-      while (!theStack.isEmpty()) {
-         char chx = theStack.pop();
-         if (chx == '(') 
-         break; 
-         else
-         output = output + chx; 
-      }
-   }
-   public static void main(String[] args) 
-   throws IOException {
-      String input = "1+2*3-4/5+6";
-      String output;
-      Practice theTrans = new Practice(input);
-      output = theTrans.doTrans(); 
-      System.out.println("Postfix is " + output + '\n');
-   }
-   class Stack {
-      private int maxSize;
-      private char[] stackArray;
-      private int top;
-      public Stack(int max) {
-         maxSize = max;
-         stackArray = new char[maxSize];
-         top = -1;
-      }
-      public void push(char j) {
-         stackArray[++top] = j;
-      }
-      public char pop() {
-         return stackArray[top--];
-      }
-      public char peek() {
-         return stackArray[top];
-      }
-      public boolean isEmpty() {
-         return (top == -1);
-     }
-   }
-}
+        }
         
-
-
-// infix which is the input string
-// dictionary with the operands a,b,c etc
-// postfix
-
-
-// constructor which turns the string input into lowercase and removes spaces and newlines
-    //infix = input.trim().toLowerCase();
-    //runs the converter funciton
-
-
-//converter function
-    //for loop - iterates through all characters in the infix String
-        //if character is from a-z (operand)
-            //append to postfix
-        //else if character is operator
-            // if stack is empty
-                //push into stack
-            //else (stack !empty)
-                // compare topChar with character (for precedence)
-                    //if topChar>character
-                        //append topChar to postfix
-                        //remove topChar from stack
-                    //push character to stack
-    //for loop - iterates through all characters, pop all the values of the stack into the postfix
-        //postfix += stack.top
-        //stack.pop
-    //return postfix
-
-
-
-
-
-
-        
+        return sum;
+    }
     
-
+    public static void findAllPossibleSums(ArrayList theArray){
+        for(int i=0; i<theArray.size();i++){
+            for(int j=i; j<theArray.size(); j++){
+                int number1 = (int)(theArray.get(i)); 
+                int number2 = (int)(theArray.get(j));
+                int sum = number1 + number2;
+                
+                if(sum > 2813){
+                    
+                }else{
+//                    System.out.println(sum);
+                    sumsOfTwoAboundantNumbers.add(sum);
+                }
+            }
+        }
+    }
     
     
+    public static void findAboundantNumbers(int number){
+        int sumOfDivisors = findSumOfDivisors(number);
+        if (sumOfDivisors > number){
+            aboundantNumbers.add(new Integer(number));
+        }
+    }
+    
+    public static int calculateSum(ArrayList arr){
+        int sum = 0;
+        for (Object o: arr){
+            sum += (int)((Integer)o);
+        }
+        return sum;
+    }
+
+
+    
+   
+   public static void main(String[] args){
+       populateArray(numbers);
+       
+       for(int i=1; i<=2813; i++){
+           findAboundantNumbers(i);
+       }
+       
+       findAllPossibleSums(aboundantNumbers);
+
+       for(Object bs:sumsOfTwoAboundantNumbers){
+        numbers.remove(bs);
+       }
+       
+       
+       
+       
+       System.out.println(calculateSum(numbers));
+       
+       
+       
+   }
+}     
+
