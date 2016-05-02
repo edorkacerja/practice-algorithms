@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package practice;
 
 import java.io.BufferedReader;
@@ -14,101 +10,60 @@ import java.util.*;
 
 /**
  *
- * @author AcerPC
+ * @author Edor Kacerja
  */
 
 
 public class Practice{
     
-    static ArrayList aboundantNumbers = new ArrayList();
-    static ArrayList sumsOfTwoAboundantNumbers = new ArrayList();
-    static ArrayList numbers = new ArrayList();
-    static ArrayList finalArray = new ArrayList();
+    public static ArrayList theFinal = new ArrayList();
     
-    
-    
-    public static void populateArray(ArrayList arr){
-        for (int i=1; i<=2813; i++){
-            arr.add(i);
-        }
+    public static boolean compareArrayLists (List a, List b){
+        Collections.sort(a);
+        Collections.sort(b);      
+        return a.equals(b);
     }
     
-    
-    
-    public static int findSumOfDivisors (int input){
-        
-        int maxD = (int)Math.sqrt(input);
-        int sum=1;
-        for(int i = 2; i <= maxD; i++)
-        {
-            if(input % i == 0)
-            {
-               sum += i;
-               int d = input/i;
-               if(d!=i)
-                  sum+=d;
-            }
-        }
-        
-        return sum;
-    }
-    
-    public static void findAllPossibleSums(ArrayList theArray){
-        for(int i=0; i<theArray.size();i++){
-            for(int j=i; j<theArray.size(); j++){
-                int number1 = (int)(theArray.get(i)); 
-                int number2 = (int)(theArray.get(j));
-                int sum = number1 + number2;
-                
-                if(sum > 2813){
-                    
-                }else{
-//                    System.out.println(sum);
-                    sumsOfTwoAboundantNumbers.add(sum);
-                }
-            }
-        }
-    }
-    
-    
-    public static void findAboundantNumbers(int number){
-        int sumOfDivisors = findSumOfDivisors(number);
-        if (sumOfDivisors > number){
-            aboundantNumbers.add(new Integer(number));
-        }
-    }
-    
-    public static int calculateSum(ArrayList arr){
-        int sum = 0;
-        for (Object o: arr){
-            sum += (int)((Integer)o);
-        }
-        return sum;
-    }
-
-
-    
-   
    public static void main(String[] args){
-       populateArray(numbers);
        
-       for(int i=1; i<=2813; i++){
-           findAboundantNumbers(i);
-       }
-       
-       findAllPossibleSums(aboundantNumbers);
+       for(int i=10; i<=99; i++){
+           String firstNumber = Integer.toString(i);
+           
+           for(int j=10; j<=99; j++){
+               String secondNumber = Integer.toString(j);
+               int product = i*j;
+               String myProduct = Integer.toString(product);
+               
+               if(product<=9999 && product>=1000){
+                   
+                   List productArray = new ArrayList();
+                   List digitArray = new ArrayList();
+                   
+                   digitArray.add(firstNumber.charAt(0));
+                   digitArray.add(firstNumber.charAt(1));
+                   digitArray.add(secondNumber.charAt(0));
+                   digitArray.add(secondNumber.charAt(1));
+                   
+                   for(int g=0; g<4; g++){
+                       productArray.add(myProduct.charAt(g));
+                   }
+                   
+                   if(compareArrayLists(digitArray, productArray)){
+                       theFinal.add(myProduct);
+                   }
+                       
+                   
+                   
+                   
+               }
 
-       for(Object bs:sumsOfTwoAboundantNumbers){
-        numbers.remove(bs);
-       }
-       
-       
-       
-       
-       System.out.println(calculateSum(numbers));
-       
-       
-       
-   }
-}     
 
+            }
+
+
+
+        }
+       
+       System.out.println(theFinal);
+    }     
+}
